@@ -1,7 +1,7 @@
 # TP2-Embebidos-GPIO
 En este repo se encuentran las librerias para el manejos de los GPIO de la EDU CIAA.
 
-Para ello se copiaron los archivos ´sapi_gpio.c´ ubicado en el path: ´C:\CIAA\firmware_v3\libs\sapi\sapi_v0.5.2\soc\peripherals\src´ y ´sapi_gpio.h´ ubicado en el path ´C:\CIAA\firmware_v3\libs\sapi\sapi_v0.5.2\soc\peripherals\inc´ y se los renombro por ´my_sapi_gpio.c´ y ´my_sapi_gpio.h´ ubicandolo en los mismos directorios donde se encontraban los archivos originales.
+Para ello se copiaron los archivos `sapi_gpio.c` ubicado en el path: `C:\CIAA\firmware_v3\libs\sapi\sapi_v0.5.2\soc\peripherals\src` y `sapi_gpio.h` ubicado en el path `C:\CIAA\firmware_v3\libs\sapi\sapi_v0.5.2\soc\peripherals\inc` y se los renombro por `my_sapi_gpio.c` y `my_sapi_gpio.h` ubicandolo en los mismos directorios donde se encontraban los archivos originales.
 
 En la nueva libreria se definieron las funciones:
 ```
@@ -11,7 +11,7 @@ En la nueva libreria se definieron las funciones:
 -bool_t mygpioToggle( gpioMap_t pin );
 ```
 
-Las estructuras:
+Se tuvo que definir las siguientes estructuras para que no entren en conflicto con las existentes en `sapi_gpio.h`:
 ```
 typedef struct {
    pinInitLpc4337_t pinName;
@@ -24,7 +24,7 @@ typedef struct {
    int8_t pin;
 } my_gpioInitLpc4337_t;
 ```
-y los tipos enumerativos
+y el tipo enumerativo:
 ```
 typedef enum {
    myGPIO_INPUT, myGPIO_OUTPUT,
@@ -33,3 +33,5 @@ typedef enum {
    myGPIO_ENABLE
 } my_gpioInit_t;
 ```
+
+Luego se diseño el programa `pwm.c` que consiste en incrementar el brillo del led `LEDB` de la placa a medida que se presiona el boton `TEC1`. En este programa se emplean las funciones definias con anterioridad.
